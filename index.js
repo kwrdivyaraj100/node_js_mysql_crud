@@ -3,7 +3,7 @@ const express = require('express'),
     require('express-async-errors');
     const db = require('./db.js'),
     employeeRoutes = require('./controllers/employee_controller.js');
-
+app.use(express.json())
     app.use('/api/employees', employeeRoutes);
 
     app.use((err, req,res, next)=>{
