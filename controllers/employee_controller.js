@@ -1,12 +1,14 @@
 const express = require('express'),
     router = express.Router()
-    const db = require('../db.js');
+
+    const service = require('../services/employee_service.js');
+   
 
 
-router.get('/', (req, res)=>{
-    db.query("SELECT * FROM employees")
-    .then(data =>res.send(data))
-    .catch(err=>console.log(err))
+router.get('/', async(req, res)=>{
+   const employees = await service.getAllEmployees()
+    // .catch(err=>console.log(err))
+    res.send(employees);
 })
 
 module.exports = router;
